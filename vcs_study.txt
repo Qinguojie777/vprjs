@@ -1,0 +1,38 @@
+//在使用vcs -help时报错 --> vcs -full64 -help时可以解决：
+    //一般来说用的是64位服务器 -full64
+
+//################################################
+vcs 
+// compile: 
+    -full64                 // 64位编译
+    -v *.v                  // *.v源文件
+    -f *.filelist           // 文件列表
+    -Mupdate                // 只编译修改后的文件  可以加快编译的速度
+    -l *.log                // 将编译过程产生的信息放在*.log文件中
+    -sverilog               // 编译SystemVerilog
+    -timescale=             // 时间分度
+    -y lib_dir              // 参考库路径 和+libext+.v+.vhd 搭配使用
+    -debug_access+all
+    +incdir+dir1..          // `include的文件夹
+    +libext+.v+.vhd         // 在参考库下寻找 .v和.vhd的文件 和 -y lib_dir 搭配使用
+    +define+MACRO=<value>+. // 加入DEFINE
+    +v2k                    // 适用于Verilog 2001 标准
+    +race                   // 竞争冒险
+//simulation:
+    -o simv_*               // 将默认的simv改成simv_*
+    -R -gui                 // 编译后打开dve gui界面查看
+
+//################################################
+./simv gui &                // 编译后的仿真命令
+
+//################################################
+$display
+$monitor
+$timescale
+
+$stop
+$finish
+
+$readmemh
+$readmemb
+重要的宏  `__FILE__, `__LINE__ ： 用于仿真sim $display(, `__FILE__,`__LINE__)
